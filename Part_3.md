@@ -28,7 +28,7 @@
 
 2. **Clone Repository on the Server:**
    ```sh
-   git clone https://github.com/chinmaymjog/web-scripts.git
+   sudo git clone https://github.com/chinmaymjog/web-scripts.git
    cd web-scripts/bash
    ```
 
@@ -62,7 +62,7 @@
 6. **Copy Ansible Playbooks & Config Files:**
    ```sh
    cd /data
-   git clone https://github.com/chinmaymjog/web-ansible.git ansible
+   sudo git clone https://github.com/chinmaymjog/web-ansible.git ansible
    ```
 
 7. **Ansible Configuration:**  
@@ -101,7 +101,7 @@
    Later we will install the jenkins backup plugin and set this as the backup location for periodic Jenkins full backup:
       ```sh
       sudo mkdir -p /data/jenkins-bkp
-      sudo chown jenkins:jenkins jenkins-bkp/
+      sudo chown jenkins:jenkins /data/jenkins-bkp/
       ```
 
 12. **Initial Jenkins Setup:**
@@ -122,16 +122,16 @@
 14. **Copy Jenkins Job Definitions:**
       ```sh
       cd /data
-      git clone https://github.com/chinmaymjog/web-jenkinsjobs.git jenkinsjobs
-      cd /data/jenkinsjobs
+      sudo git clone https://github.com/chinmaymjog/web-jenkinsjobs.git jenkinsjobs
+      cd /data/jenkinsjobs/jobs
       sudo cp -avr . /var/lib/jenkins/jobs/
       sudo chown -R jenkins:jenkins /var/lib/jenkins/jobs/
-      systemctl restart jenkins.service 
+      sudo systemctl restart jenkins.service 
       ```
 
 15. **Verify Jenkins is Back Online.**
    Browse the bastion host IP on port 8080 to access Jenkins
-   e.g. http://4.213.89.107:8080re
+   e.g. http://4.213.89.107:8080
 
 ## Web Host Preparation
 From the Bastion host, SSH into the web server. The private key has been placed on bastion host under users home directory during terraform provisioning. Use IPs from the Terraform deployment for production or preproduction in [Part 2](./Part_2.md#deploying-web-resources)
