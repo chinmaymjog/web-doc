@@ -1,24 +1,21 @@
 # Part 2: Terraform – Deploying Azure Infrastructure
 
 ![Architecture](./images/net_diag.png)
-This README provides a structured, step-by-step guide for deploying Azure infrastructure using Terraform.
-
-## Table of Contents
-1. [Introduction](#introduction)
-2. [Resource Naming Convention](#resource-naming-convention)
-3. [Terraform Script Overview](#terraform-script-overview)
-4. [Resources Deployed](#resources-deployed)
-5. [How to Use](#how-to-use)
-6. [Customization](#customization)
-
 ## Introduction
-This repository contains a Terraform script to deploy the architecture explained in [Part 1](./Part_1.md).
+[This](https://github.com/chinmaymjog/web-tf.git) repository contains a Terraform script to deploy the architecture explained in [Part 1](./Part_1.md). Here is step-by-step guide for deploying Azure infrastructure using Terraform.
 
-We use the **`azurerm`** provider, which allows Terraform to manage Azure infrastructure. The **`features {}`** block is required but can remain empty for now.
+[Repository link](https://github.com/chinmaymjog/web-tf.git)
 
-### Directory Structure
+## Directory Structure
 - **hub** – Contains Terraform scripts to deploy common Azure services such as Bastion Host, Azure Front Door, Azure NetApp Files, and Key Vault.
 - **web** – Contains Terraform scripts to deploy production & preproduction environments for our hosting platform. It includes web servers, MySQL PaaS, and supporting configurations, integrating with resources from the hub. Environment-specific deployment is controlled with Terraform variable files.
+
+## Topics covered
+1. [Resource Naming Convention](#resource-naming-convention)
+2. [Terraform Script Overview](#terraform-script-overview)
+3. [Resources Deployed](#resources-deployed)
+4. [How to Use](#how-to-use)
+5. [Customization](#customization)
 
 ## Resource Naming Convention
 We follow Azure best practices for naming resources. The naming convention used is as follows:
@@ -69,6 +66,15 @@ Refer to:
 - Service Principal with Contributor role on the subscription
 
 Authenticate Terraform using a Service Principal with a Client Secret, as detailed in the [Terraform documentation](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/guides/service_principal_client_secret#configuring-the-service-principal-in-terraform).
+Clone the repository:
+```sh
+git clone https://github.com/chinmaymjog/web-tf.git
+```
+
+Navigate to web-tf/terraform from your current location.
+```sh
+cd web-tf/terraform/
+```
 
 Create a `.creds` file in the Terraform directory and add:
 ```sh
@@ -117,7 +123,7 @@ Private DNS Zone Name
 Private DNS Zone ID
 Key Vault Name
 Key Vault ID
-VM IP
+Bastion VM IP
 ```
 
 ### Deploying Web Resources

@@ -1,6 +1,11 @@
 # Part 1: Shared Hosting Platform Architecture
-
+## Introduction
 We’ll start by exploring the Azure infrastructure that forms the backbone of our hosting platform. I’ll explain the architectural design, the resources involved, and the key decisions made to ensure a secure and scalable environment.
+
+## Topics covered
+1. [Architecture Overview](#architecture-overview)
+2. [Resource Considerations](#resource-considerations)
+3. [Connection Flow](#connection-flow)
 
 ## Architecture Overview
 This architecture is based on the **Hub-and-Spoke Model**.
@@ -35,7 +40,7 @@ This architecture is based on the **Hub-and-Spoke Model**.
 ### Network Isolation
 All backend components (VMs, Database, Storage, Key Vault) reside within a Virtual Network (VNet) to ensure secure communication while being protected from the public internet.
 
-## Data Flow
+## Connection Flow
 1. Users access the application over the internet.
 2. Azure Front Door routes traffic to the Azure Load Balancer.
 3. The Load Balancer distributes traffic across the web servers.
